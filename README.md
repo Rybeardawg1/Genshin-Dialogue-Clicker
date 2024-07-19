@@ -9,5 +9,3 @@ Set up:
  - To end auto clicker, escape key
 
 If you want this macro to always be active so you don't have to run ahk every boot up, place it in your start up folder
-
-The coordinates are hardcoded for a 1080p screen lol, I'll prolly fix that
