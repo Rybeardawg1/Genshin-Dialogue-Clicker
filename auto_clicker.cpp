@@ -5,6 +5,15 @@
 bool running = true;
 int click_count = 0;
 
+// Function to get proportionate coordinates
+void getProportionateCoordinates(int &x, int &y, int originalX, int originalY, int originalWidth, int originalHeight)
+{
+    int screenWidth = GetSystemMetrics(SM_CXSCREEN);
+    int screenHeight = GetSystemMetrics(SM_CYSCREEN);
+    x = (originalX * screenWidth) / originalWidth;
+    y = (originalY * screenHeight) / originalHeight;
+}
+
 // Function to move the mouse to (x, y) and click
 void click_at_position(int x, int y, int interval)
 {
@@ -38,7 +47,6 @@ void click_at_position(int x, int y, int interval)
     }
 }
 
-// Function to listen for the ESC key press
 void listen_for_esc()
 {
     while (running)
@@ -53,9 +61,14 @@ void listen_for_esc()
 
 int main()
 {
-    int x = 1550;
-    int y = 800;
+    int originalWidth = 1920;
+    int originalHeight = 1080;
+    int originalX = 1550;
+    int originalY = 800;
+    int x, y;
     int interval = 1;
+
+    getProportionateCoordinates(x, y, originalX, originalY, originalWidth, originalHeight);
 
     std::cout << "Press ESC to stop the script." << std::endl;
 
